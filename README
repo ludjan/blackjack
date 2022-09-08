@@ -19,9 +19,10 @@ java -jar blackjack.jar 'path/to/file.txt'
 
 2. Testing
 - I have used JUnit for testing
-- I have mostly written unit tests in on the side of writing the functions
+- I have mostly written unit tests in parallell with writing the functions
 - All 33 tests pass on my machine.
-- The testing of the BlackJack logic was done by running program manually with the different input files
+- The testing of the BlackJack logic was done by running program manually with the different input files 
+(in hindsight, I should have not made Decks so fixed on how they were set up, as hindered testing)
 
 3. Structure
 I have tried to give the program a reasonable structure, which made pretty good sense to me at the time.
