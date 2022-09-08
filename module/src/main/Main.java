@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         
         Deck deck;
-        BlackjackPlayer sam = new BlackjackPlayer("sam");
+        BlackjackPlayer player = new BlackjackPlayer("sam");
         Playable game;
         String fileName; 
         
@@ -23,7 +23,7 @@ public class Main {
             if (fileName == null) deck = new Deck();
             else deck = new Deck(fileName);
 
-            game = new Blackjack(deck, sam);
+            game = new Blackjack(deck, player);
             
             game.play();
             System.out.println(game.getResultString());

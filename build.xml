@@ -1,4 +1,4 @@
-<project name="finn-case" basedir="." default="jar">
+<project name="blackjack" basedir="." default="jar">
 
     <property name="src.dir"     value="module/src"/>
     <property name="lib.dir"     value="lib"/>

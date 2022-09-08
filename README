@@ -1,9 +1,35 @@
-Project uses Ant to build jar file
+My solution to the case 'Can you beat the dealer at 21?'
 
-How to run:
-1. From root, run "ant" to compile and produce jar file to the root directory
-2. Use -jar flag to run the file
+Contents: 
+1. How to run
+2. Testing
+3. Structure
 
-Examples:
-java -jar finn-case.jar inputs/testFile1.txt
-java -jar finn-case.jar
+1. How to run
+- I have used Apache Ant as build tool in this project.
+- The blackjack.jar file is a compiled and runnable version of the game.
+- (If you have Ant installed, you can use the default command 'ant' to recompile to project and reproduce the .jar file.)
+
+- The jar file can be run (from root) by typing:
+java -jar blackjack.jar
+or
+java -jar blackjack.jar 'path/to/file.txt'
+
+- The program will only accept files of with file extension .txt.
+
+2. Testing
+- I have used JUnit for testing
+- I have mostly written unit tests in on the side of writing the functions
+- All 33 tests pass on my machine.
+- The testing of the BlackJack logic was done by running program manually with the different input files
+
+3. Structure
+I have tried to give the program a reasonable structure, which made pretty good sense to me at the time.
+
+In the program, a BlackjackDealer is a specialized kind of BlackjackPlayer who can deal cards, and who has a different "wantMoreCards()" strategy than a normal player.
+
+The BlackjackDealer is created by an instance of the Blackjack class itself, which controls the flow of events. 
+As a game of Blackjack is played, the different 'phases' are split up into smaller private methods, where the player objects contains the logic of if they want to keep playing or not.
+Not all phases are needed if a winner is determined early on.
+
+At the end of a game of Blackjack, you can get the result of the game.
