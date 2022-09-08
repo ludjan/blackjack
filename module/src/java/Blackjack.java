@@ -8,8 +8,6 @@ public class Blackjack implements Playable {
     private BlackjackDealer dealer;
     private BlackjackPlayer winner = null;
 
-
-    // Dealer should be subclass of dealer
     public Blackjack(Deck deck, BlackjackPlayer player) {
         this.player = player;
         this.dealer = new BlackjackDealer("dealer", deck, player);
@@ -26,7 +24,6 @@ public class Blackjack implements Playable {
 
     private void dealStartingHand() throws OutOfCardsException {
 
-        // each player is given two cards in order [player, dealer, player, dealer]
         dealer.dealTo(player);
         dealer.dealTo(dealer);
         dealer.dealTo(player);
@@ -35,12 +32,19 @@ public class Blackjack implements Playable {
     }
 
     // if player has 21, it wins.
-    // if dealer has 21 when player has not, dealer wins    
+    // if player has 22 or dealer has 21 (when player does not), dealer wins
+    // if dealer dealer has 22, player wins    
     private void checkStartingHandAndSetWinner() {
         if (player.hasBlackjack()) {
             winner = player;
-        } else if (player.hasLost()) {
+            return;
+        }
+        if (player.hasLost() || dealer.hasBlackjack()) {
             winner = dealer;
+            return;
+        }
+        if (dealer.hasLost()) {
+            winner = player;
         }
     }
 
