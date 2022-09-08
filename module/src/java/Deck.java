@@ -40,15 +40,14 @@ public class Deck {
     public static ArrayList<Card> shuffleCards(ArrayList<Card> localCards) {
 
         ArrayList<Card> localCardsCopy = new ArrayList<Card>(localCards);
-        
-        int len = localCardsCopy.size();
-        for (int i = 0; i < len ; i++) {
-            // range of what random value can be shrinks each iteration, so that we don't reshuffle the same card
-            int random = (int) (Math.random() * (len-i));
-            localCards.add(localCards.remove(random));
-        }
+        ArrayList<Card> shuffledCards = new ArrayList<Card>();
 
-        return localCardsCopy;
+        while (localCardsCopy.size() > 0) {
+            int maxNumber = localCardsCopy.size();
+            int random = (int) (Math.random() * maxNumber);
+            shuffledCards.add(localCardsCopy.remove(random));
+        }
+        return shuffledCards;
     }
     
     public ArrayList<Card> createDeckFromFile(String filePath) throws InvalidCardFileContentException, FileNotFoundException {
