@@ -17,9 +17,9 @@ public class TestMain {
     @Test (expected = InvalidInputArgumentException.class)
     public void readFileName_isNotTxt_doesNotReturn() throws InvalidInputArgumentException {
         String [] args = {"fileName"};
-        String fileName = Main.getFileName(args);
+        Main.getFileName(args);
         
-        // expect Exception thrown
+        // expect Exception thrown        
     }
 
     @Test
@@ -39,7 +39,7 @@ public class TestMain {
     @Test (expected = InvalidInputArgumentException.class)
     public void readFileName_doubleInput_returnsNull() throws InvalidInputArgumentException {
         String [] args = {"firstFileName.txt", "secondFileName.txt"};
-        String fileName = Main.getFileName(args);
+        Main.getFileName(args);
 
         // expect Exception thrown
     }

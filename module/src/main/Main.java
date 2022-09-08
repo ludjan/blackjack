@@ -1,7 +1,5 @@
 package module.src.main;
 
-import java.io.FileNotFoundException;
-
 import module.src.java.Blackjack;
 import module.src.java.Deck;
 import module.src.java.BlackjackPlayer;
