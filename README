@@ -1,0 +1,9 @@
+Project uses Ant to build jar file
+
+How to run:
+1. From root, run "ant" to compile and produce jar file to the root directory
+2. Use -jar flag to run the file
+
+Examples:
+java -jar finn-case.jar inputs/testFile1.txt
+java -jar finn-case.jar

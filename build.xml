@@ -1,0 +1,67 @@
+<project name="finn-case" basedir="." default="jar">
+
+    <property name="src.dir"     value="module/src"/>
+    <property name="lib.dir"     value="lib"/>
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes/"/>
+    <property name="module.dir"  value="${classes.dir}/module"/>
+    <property name="jar.dir"     value="."/>
+    <property name="main-class"  value="module.src.main.Main"/>
+    
+    <property name="junit.jar"   value="lib/junit-4.13.2.jar"/>
+    <property name="test.dir"    value="${src.dir}/java/tests"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>    
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac 
+            srcdir="${src.dir}" 
+            destdir="${classes.dir}" 
+            classpathref="classpath" 
+            includeantruntime="false"
+            debuglevel="lines,vars,source"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+        <java fork="true" classname="${main-class}">
+            <classpath>
+                <path refid="classpath"/>
+                <path location="${jar.dir}/${ant.project.name}.jar"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="test" depends="compile">
+        <junit>
+            <classpath>
+                <pathelement location="bin" />    
+                <pathelement location="lib/junit-4.10.jar"/>
+            </classpath>    
+            <batchtest>
+                <fileset dir="${test.dir}">
+                        <include name="**/*Test*" />
+                </fileset>
+            </batchtest>
+            <formatter type="brief" usefile="false"/>
+        </junit>
+    </target>  
+
+    <target name="clean-build" depends="clean,jar"/>
+    
+</project>
