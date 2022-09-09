@@ -13,9 +13,8 @@ import module.src.java.Exceptions.OutOfCardsException;
 public class TestDeck {
 
     @Test
-    public void generateDeck_returns52Cards() {
-        Deck deck = new Deck();
-        assertEquals(52, deck.cards.size());
+    public void generateFullDeck_returns52Cards() {
+        assertEquals(52, Deck.generateFullDeck().size());
     }
 
     @Test
@@ -59,5 +58,4 @@ public class TestDeck {
             deck.pull();
         }
     }
-    
 }

@@ -19,6 +19,11 @@ public class Deck {
         this.cards = createDeckFromFile(filePath);
     }
 
+    // this constructor is used to specify decks in testing
+    public Deck (ArrayList<Card> cards) {
+        this.cards = cards;
+    }
+
     public ArrayList<Card> generateFullDeckAndShuffle() {
         ArrayList<Card> localCards = generateFullDeck();
         return shuffleCards(localCards);

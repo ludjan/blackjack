@@ -19,8 +19,9 @@ public class Hand {
 
     public String toString() {
         String repr = "";
-        for (Card c : cards) {
-            repr += c + " ";
+        for (int i = 0; i < cards.size(); i++) {
+            if (i == cards.size() -1) repr += cards.get(i);
+            else repr += cards.get(i) + ", ";
         }
         return repr;
     }

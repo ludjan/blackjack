@@ -1,6 +1,7 @@
 package module.src.main;
 
 import module.src.java.Blackjack;
+import module.src.java.BlackjackDealer;
 import module.src.java.Deck;
 import module.src.java.BlackjackPlayer;
 import module.src.java.utils.StringUtil;
@@ -11,20 +12,27 @@ public class Main {
     
     public static void main(String[] args) {
         
-        Deck deck;
-        BlackjackPlayer player = new BlackjackPlayer("sam");
-        Playable game;
         String fileName; 
+        Deck deck;
+        BlackjackPlayer player;
+        BlackjackDealer dealer;
+        Playable game;
         
         try {
+
             fileName = getFileName(args);
             if (fileName == null) deck = new Deck();
             else deck = new Deck(fileName);
 
-            game = new Blackjack(deck, player);
+            player = new BlackjackPlayer("sam");
+            dealer = new BlackjackDealer("dealer", deck, player);
+
+            game = new Blackjack(player, dealer);
             
             game.play();
+            
             System.out.println(game.getResultString());
+
         } catch(InvalidInputArgumentException e) {
             System.out.println(e);
             printRunExamples();

@@ -18,18 +18,19 @@ java -jar blackjack.jar 'path/to/file.txt'
 - The program will only accept files of with file extension .txt.
 
 2. Testing
-- I have used JUnit for testing
-- I have mostly written unit tests in on the side of writing the functions
-- All 33 tests pass on my machine.
-- The testing of the BlackJack logic was done by running program manually with the different input files
+- I have used JUnit for testing. Tests have mostly been written in parallell with development.
+- All 36 tests pass on my machine.
+- The testing of the BlackJack logic was mainly done by running program manually with the different input files
 
 3. Structure
 I have tried to give the program a reasonable structure, which made pretty good sense to me at the time.
 
 In the program, a BlackjackDealer is a specialized kind of BlackjackPlayer who can deal cards, and who has a different "wantMoreCards()" strategy than a normal player.
 
-The BlackjackDealer is created by an instance of the Blackjack class itself, which controls the flow of events. 
-As a game of Blackjack is played, the different 'phases' are split up into smaller private methods, where the player objects contains the logic of if they want to keep playing or not.
+You need both a BlackjackPlayer and a BlackjackDealer to instatiate a game of Blackjack.
+The Blackjack game then which controls the flow of events. 
+As a game of Blackjack is played, the different 'phases' are split up into smaller private methods.
+The players themselves contain the logic handling if they want to keep playing or not.
 Not all phases are needed if a winner is determined early on.
 
 At the end of a game of Blackjack, you can get the result of the game.

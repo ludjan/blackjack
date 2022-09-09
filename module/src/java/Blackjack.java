@@ -8,9 +8,9 @@ public class Blackjack implements Playable {
     private BlackjackDealer dealer;
     private BlackjackPlayer winner = null;
 
-    public Blackjack(Deck deck, BlackjackPlayer player) {
+    public Blackjack(BlackjackPlayer player, BlackjackDealer dealer) {
         this.player = player;
-        this.dealer = new BlackjackDealer("dealer", deck, player);
+        this.dealer = dealer;
     }
 
     @Override
@@ -82,6 +82,10 @@ public class Blackjack implements Playable {
         resultString += player + "\n";
         resultString += dealer + "";
         return resultString;
+    }
+
+    public BlackjackPlayer getWinner() {
+        return winner;
     }
     
 }
