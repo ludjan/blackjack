@@ -28,8 +28,8 @@ I have tried to give the program a reasonable structure, which made pretty good 
 In the program, a BlackjackDealer is a specialized kind of BlackjackPlayer who can deal cards, and who has a different "wantMoreCards()" strategy than a normal player.
 
 You need both a BlackjackPlayer and a BlackjackDealer to instatiate a game of Blackjack.
-The Blackjack game then which controls the flow of events. 
-As a game of Blackjack is played, the different 'phases' are split up into smaller private methods.
+The Blackjack game then controls the flow of events. 
+As a game of Blackjack is played, the different 'phases' are split up into smaller private methods for readability.
 The players themselves contain the logic handling if they want to keep playing or not.
 Not all phases are needed if a winner is determined early on.
 
