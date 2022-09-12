@@ -1,0 +1,23 @@
+Prosessen
+- Identifiserte Deck, Card og BlackJackPlayer som rimelige objekter.
+- Laget enkelt skall med en rekke if-setninger som funket.
+- Flyttet flyten over til en klasse Blackjack, og splittet opp i funksjoner.
+- Lot Blackajck implementere playable, for å lett kunne bytte det ut med nye kortspill i Main.
+- Refaktorerte lesing og oppretting av kort til egne klasser.
+- Ikke helt fornøyd med at Blackjack-klassen tok seg av deling av kort, så laget subklasse Dealer.
+- Det er rimelig at spilleren selv velger om den vil ha flere kort, men sånn i etterhånd er det ikke rimelig at den også svarer på om den har tapt eller ikke. Det burde nok Blackjack ta seg av.
+
+- Kanskje i overkant mange public felter og metoder, for å kunne teste lettere.
+
+Card kunne vært egen klasse, og BlackjackCard kunne overskrivet verdien til kortet.
+Ville gitt mening å implementere en subklasse for fremtidige spill-typer.
+
+Deck er ikke en stack
+Valgte ArrayList for å lettere kunne peeke på forskjellige kort i testing.
+Selv om en Deck er en naturlig stack trenger ikke bruker av Deck til å forholde seg til implementasjonen.
+
+
+
+___________
+
+Feedback:

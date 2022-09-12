@@ -1,22 +1,22 @@
 package module.src.java;
 
-public enum Suit {
+public enum CardSuit {
     
     H, S, D, C;
 
-    public static Suit getSuitFromSymbol(String symbol) {
+    public static CardSuit getSuitFromSymbol(String symbol) {
         switch(symbol) {
-            case "H": return Suit.H;
-            case "S": return Suit.S;
-            case "D": return Suit.D;
-            case "C": return Suit.C;
+            case "H": return CardSuit.H;
+            case "S": return CardSuit.S;
+            case "D": return CardSuit.D;
+            case "C": return CardSuit.C;
             default: return null;
         }
     }
 
     public static String getAvailableSuits() {
         String repr = "[";
-        for (Suit s: Suit.values()) {
+        for (CardSuit s: CardSuit.values()) {
             repr += s + "|";
         }
         repr = repr.substring(0, repr.length()-1) + "]";

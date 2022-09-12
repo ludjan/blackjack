@@ -7,29 +7,31 @@ import org.junit.Test;
 
 import module.src.java.Card;
 import module.src.java.Deck;
-import module.src.java.Suit;
+import module.src.java.CardSuit;
+import module.src.java.CardValue;
 import module.src.java.Exceptions.OutOfCardsException;
+import module.src.java.utils.DeckUtil;
 
 public class TestDeck {
 
     @Test
     public void generateFullDeck_returns52Cards() {
-        assertEquals(52, Deck.generateFullDeck().size());
+        assertEquals(52, DeckUtil.generateFullDeck().size());
     }
 
     @Test
     public void generateDeck_firstAndLastCard() {
 
-        ArrayList<Card> cards = Deck.generateFullDeck();
+        ArrayList<Card> cards = DeckUtil.generateFullDeck();
 
         Card firstCard = cards.get(0);
         Card lastCard = cards.get(51);
 
-        assertEquals(Suit.H, firstCard.suit);
-        assertEquals("2", firstCard.valueString);
+        assertEquals(CardSuit.H, firstCard.suit);
+        assertEquals(CardValue.TWO, firstCard.value);
         
-        assertEquals(Suit.C, lastCard.suit);
-        assertEquals("A", lastCard.valueString);
+        assertEquals(CardSuit.C, lastCard.suit);
+        assertEquals(CardValue.ACE, lastCard.value);
     }
 
 
@@ -38,8 +40,8 @@ public class TestDeck {
     public void shuffleDeck_returnsAShuffledDeck() {
 
         // create a new deck, and get a shuffled copy
-        ArrayList<Card> cards = Deck.generateFullDeck();
-        ArrayList<Card> shuffledCards = Deck.shuffleCards(cards);
+        ArrayList<Card> cards = DeckUtil.generateFullDeck();
+        ArrayList<Card> shuffledCards = DeckUtil.shuffleCards(cards);
 
         // iterate and check for a difference in any of the places
         boolean cardsAreEqual = true;

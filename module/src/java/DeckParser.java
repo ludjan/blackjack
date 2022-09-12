@@ -3,8 +3,6 @@ package module.src.java;
 import java.util.ArrayList;
 
 import module.src.java.Exceptions.InvalidCardFileContentException;
-import module.src.java.utils.CardUtil;
-import module.src.java.utils.StringUtil;
 
 public class DeckParser {
 
@@ -24,7 +22,7 @@ public class DeckParser {
     public static Card parseCard(String cardElement, int i) throws InvalidCardFileContentException {
 
         // a card representation must be 2 or 3 chars long
-        if (cardElement.length() < 2 && cardElement.length() > 3) {
+        if (cardElement.length() < 2 || cardElement.length() > 3) {
             throw new InvalidCardFileContentException(
                 "card representation" ,
                 "between 2-3 symbols", 
@@ -35,11 +33,11 @@ public class DeckParser {
 
         // suit must be one of the defined symbols in enum
         String inputSuitSymbol = cardElement.substring(0, 1);
-        Suit cardSuit = Suit.getSuitFromSymbol(inputSuitSymbol);
+        CardSuit cardSuit = CardSuit.getSuitFromSymbol(inputSuitSymbol);
         if (cardSuit == null) {
             throw new InvalidCardFileContentException(
                 "Suit", 
-                Suit.getAvailableSuits(), 
+                CardSuit.getAvailableSuits(), 
                 cardElement.charAt(0),
                 i
             );
@@ -48,17 +46,18 @@ public class DeckParser {
         String cardValueString 
             = cardElement.substring(1, cardElement.length()); // we must take value 10 into account
 
-        String [] allowedCardValues = CardUtil.getAllowedCardValues();
-        if (!StringUtil.contains(allowedCardValues, cardValueString)) {
+        CardValue cardValue = CardValue.getValueFromSymbol(cardValueString);
+        if (cardValue == null) {
             throw new InvalidCardFileContentException(
                 "cardvalue", 
-                "between 2-A", 
+                CardValue.getAvailableValues(), 
                 cardValueString,
                 i
             );
+
         }
 
-        return new Card(cardSuit, cardValueString);
+        return new Card(cardSuit, cardValue);
     }
 
 }

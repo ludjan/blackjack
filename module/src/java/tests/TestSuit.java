@@ -3,29 +3,29 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-import module.src.java.Suit;
+import module.src.java.CardSuit;
 
 public class TestSuit {
     
     @Test 
     public void getSuitFromSymbol_getHSDC_returnTrue() {
-        Suit hearts = Suit.getSuitFromSymbol("H");
-        Suit spades = Suit.getSuitFromSymbol("S");
-        Suit diamonds = Suit.getSuitFromSymbol("D");
-        Suit clubs = Suit.getSuitFromSymbol("C");
+        CardSuit hearts = CardSuit.getSuitFromSymbol("H");
+        CardSuit spades = CardSuit.getSuitFromSymbol("S");
+        CardSuit diamonds = CardSuit.getSuitFromSymbol("D");
+        CardSuit clubs = CardSuit.getSuitFromSymbol("C");
 
-        assertEquals(Suit.H, hearts);
-        assertEquals(Suit.S, spades);
-        assertEquals(Suit.D, diamonds);
-        assertEquals(Suit.C, clubs);
+        assertEquals(CardSuit.H, hearts);
+        assertEquals(CardSuit.S, spades);
+        assertEquals(CardSuit.D, diamonds);
+        assertEquals(CardSuit.C, clubs);
     }
 
     @Test 
     public void getSuitFromSymbol_InvalidInput_returnsFalse() {
-        Suit y = Suit.getSuitFromSymbol("y");
-        Suit l = Suit.getSuitFromSymbol("L");
-        Suit a = Suit.getSuitFromSymbol("A");
-        Suit r = Suit.getSuitFromSymbol("r");
+        CardSuit y = CardSuit.getSuitFromSymbol("y");
+        CardSuit l = CardSuit.getSuitFromSymbol("L");
+        CardSuit a = CardSuit.getSuitFromSymbol("A");
+        CardSuit r = CardSuit.getSuitFromSymbol("r");
 
         assertNull(y);
         assertNull(l);

@@ -6,7 +6,8 @@ import org.junit.Test;
 
 import module.src.java.Card;
 import module.src.java.DeckParser;
-import module.src.java.Suit;
+import module.src.java.CardSuit;
+import module.src.java.CardValue;
 import module.src.java.Exceptions.InvalidCardFileContentException;
 
 public class TestDeckParser {
@@ -15,7 +16,7 @@ public class TestDeckParser {
     public void parseCard_validInput_returnsExpectedCard() throws InvalidCardFileContentException {
 
         Card parsedCard = DeckParser.parseCard("H5", 0);
-        Card regularCard = new Card(Suit.H, "5");
+        Card regularCard = new Card(CardSuit.H, CardValue.FIVE);
 
         assertTrue(parsedCard.equals(regularCard));
     }
@@ -40,7 +41,7 @@ public class TestDeckParser {
         
         String cardsString =  "CA, D5, H9, HQ, S8";
         ArrayList<Card> cards;
-        Card expectedCard = new Card(Suit.D, "5");
+        Card expectedCard = new Card(CardSuit.D, CardValue.FIVE);
         Card actualCard;
 
         cards = DeckParser.getCardArrayListFromString(cardsString);

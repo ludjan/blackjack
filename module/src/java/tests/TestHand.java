@@ -5,7 +5,8 @@ import org.junit.Test;
 
 import module.src.java.Card;
 import module.src.java.Hand;
-import module.src.java.Suit;
+import module.src.java.CardSuit;
+import module.src.java.CardValue;
 
 public class TestHand {
 
@@ -18,16 +19,16 @@ public class TestHand {
     @Test
     public void handWithAceAndJack_isWorth21() {
         Hand hand = new Hand();
-        hand.addCard(new Card(Suit.H, "A"));
-        hand.addCard(new Card(Suit.S, "J"));
+        hand.addCard(new Card(CardSuit.H, CardValue.ACE));
+        hand.addCard(new Card(CardSuit.S, CardValue.JACK));
         assertEquals(21, hand.determineScore());
     }
 
     @Test
     public void handWithTwoAces_isWorth22() {
         Hand hand = new Hand();
-        hand.addCard(new Card(Suit.H, "A"));
-        hand.addCard(new Card(Suit.S, "A"));
+        hand.addCard(new Card(CardSuit.H, CardValue.ACE));
+        hand.addCard(new Card(CardSuit.S, CardValue.ACE));
         assertEquals(22, hand.determineScore());
     }
     

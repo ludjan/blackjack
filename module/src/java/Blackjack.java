@@ -39,11 +39,11 @@ public class Blackjack implements Playable {
             winner = player;
             return;
         }
-        if (player.hasLost() || dealer.hasBlackjack()) {
+        if (hasPlayerLost(player) || dealer.hasBlackjack()) {
             winner = dealer;
             return;
         }
-        if (dealer.hasLost()) {
+        if (hasPlayerLost(dealer)) {
             winner = player;
         }
     }
@@ -56,7 +56,7 @@ public class Blackjack implements Playable {
     }
 
     private void checkScoreSetOppositeWinner(BlackjackPlayer p) {
-        if (p.hasLost())
+        if (hasPlayerLost(p))
             winner = getOpponent(p);
     }
     
@@ -75,12 +75,17 @@ public class Blackjack implements Playable {
         // score cannot be the same, since dealer pulls if they are equal
     }
 
+    private boolean hasPlayerLost(Player p) {
+        if (p.getScore() > 21) return true;
+        return false;
+    }
+
     @Override
     public String getResultString() {
         String resultString = "";
         resultString += winner.name + "\n";
-        resultString += player + "\n";
-        resultString += dealer + "";
+        resultString += player + ": " + player.hand + "\n";
+        resultString += dealer + ": " + dealer.hand;
         return resultString;
     }
 

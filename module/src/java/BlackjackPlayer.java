@@ -20,10 +20,6 @@ public class BlackjackPlayer extends Player {
         return getScore() == 21;
     }
 
-    public boolean hasLost() {
-        return getScore() > 21;
-    }
-
     @Override
     public int getScore() {
         return hand.determineScore();
@@ -31,7 +27,7 @@ public class BlackjackPlayer extends Player {
 
     @Override
     public String toString() {
-        return name + ": " + hand;
+        return name;
     }
 
 }
